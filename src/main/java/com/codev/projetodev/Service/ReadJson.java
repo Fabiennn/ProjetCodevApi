@@ -39,14 +39,14 @@ public class ReadJson {
             arrayList.add(m.getValue());
             if (json.getJSONObject("data").getJSONObject("iaqi").has("pm10")) {
                 arrayList.add(json.getJSONObject("data").getJSONObject("iaqi").getJSONObject("pm10").getString("v"));
-            } else if (json.getJSONObject("data").getJSONObject("forecast").getJSONObject("daily").has("pm10")){
+            } else if (json.getJSONObject("data").getJSONObject("forecast").getJSONObject("daily").has("pm10")) {
                 arrayList.add(json.getJSONObject("data").getJSONObject("forecast").getJSONObject("daily").getJSONArray("pm10").getJSONObject(0).getString("avg"));
             } else {
                 arrayList.add("Unknown");
             }
             if (json.getJSONObject("data").getJSONObject("iaqi").has("o3")) {
                 arrayList.add(json.getJSONObject("data").getJSONObject("iaqi").getJSONObject("o3").getString("v"));
-            } else if (json.getJSONObject("data").getJSONObject("forecast").getJSONObject("daily").has("o3")){
+            } else if (json.getJSONObject("data").getJSONObject("forecast").getJSONObject("daily").has("o3")) {
                 arrayList.add(json.getJSONObject("data").getJSONObject("forecast").getJSONObject("daily").getJSONArray("o3").getJSONObject(0).getString("avg"));
             } else {
                 arrayList.add("Unknown");
@@ -54,7 +54,7 @@ public class ReadJson {
 
             if (json.getJSONObject("data").getJSONObject("iaqi").has("no2")) {
                 arrayList.add(json.getJSONObject("data").getJSONObject("iaqi").getJSONObject("no2").getString("v"));
-            } else if (json.getJSONObject("data").getJSONObject("forecast").getJSONObject("daily").has("no2")){
+            } else if (json.getJSONObject("data").getJSONObject("forecast").getJSONObject("daily").has("no2")) {
                 arrayList.add(json.getJSONObject("data").getJSONObject("forecast").getJSONObject("daily").getJSONArray("no2").getJSONObject(0).getString("avg"));
             } else {
                 arrayList.add("Unknown");
@@ -62,13 +62,14 @@ public class ReadJson {
 
             if (json.getJSONObject("data").getJSONObject("iaqi").has("so2")) {
                 arrayList.add(json.getJSONObject("data").getJSONObject("iaqi").getJSONObject("so2").getString("v"));
-            } else if (json.getJSONObject("data").getJSONObject("forecast").getJSONObject("daily").has("so2")){
+            } else if (json.getJSONObject("data").getJSONObject("forecast").getJSONObject("daily").has("so2")) {
                 arrayList.add(json.getJSONObject("data").getJSONObject("forecast").getJSONObject("daily").getJSONArray("so2").getJSONObject(0).getString("avg"));
             } else {
                 arrayList.add("Unknown");
             }
 
             arrayList.add(json.getJSONObject("data").getString("aqi"));
+            arrayList.add(this.assignedColor(json.getJSONObject("data").getInt("aqi")));
             hashMap.put(hashMap.size(), arrayList);
             /*
             InputStream is = new URL(url).openStream();
@@ -83,7 +84,7 @@ public class ReadJson {
 
 
     public HashMap<String, String> initHashMap() {
-        HashMap <String, String> hashMap = new HashMap<>();
+        HashMap<String, String> hashMap = new HashMap<>();
         hashMap.put("paris", "FR");
         hashMap.put("berlin", "DE");
         hashMap.put("bruxelles", "BE");
@@ -94,5 +95,19 @@ public class ReadJson {
         return hashMap;
     }
 
+    public String assignedColor(int valeur) {
+        if (valeur >= 0 && valeur <= 50) {
+            return "3AE81F";
+        } else if (valeur <= 100) {
+            return "EBF016";
+        } else if (valeur <= 150) {
+            return "F48812";
+        } else if (valeur <= 200) {
+            return "EE2E16";
+        } else if (valeur <= 300) {
+            return "7D1598";
+        } else return "90141F";
 
+
+    }
 }
