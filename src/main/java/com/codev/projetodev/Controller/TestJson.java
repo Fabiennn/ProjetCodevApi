@@ -36,9 +36,9 @@ public class TestJson {
     }
 
 
-    @GetMapping(value = "/test3/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> getAllHistorique(@PathVariable String id) {
-        return new ResponseEntity<String>(this.readJson.getAllHistorique(id).toString(), HttpStatus.OK);
+    @GetMapping(value = "/test3/{id}/{annee}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<String> getAllHistorique(@PathVariable String id, @PathVariable(value = "annee") int annee) {
+        return new ResponseEntity<String>(this.readJson.getAllHistorique(id, annee).toString(), HttpStatus.OK);
     }
 
 

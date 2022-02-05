@@ -144,7 +144,7 @@ public class ReadJson {
     }
 
 
-    public JSONObject getAllHistorique(String pays) {
+    public JSONArray getAllHistorique(String pays, int annee ) {
         String url = "https://www.climatewatchdata.org/api/v1/data/historical_emissions?regions=" + pays;
         InputStream inputStream = null;
         try {
@@ -152,12 +152,14 @@ public class ReadJson {
             BufferedReader rd = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
             String jsonText = readAll(rd);
             JSONObject json = new JSONObject(jsonText);
-            JSONObject jsonObject = new JSONObject();
-            for (int i = 14; i < 25; i++) {
-                String name = json.getJSONArray("data").getJSONObject(i).getString("sector");
-                jsonObject.put(name, json.getJSONArray("data").getJSONObject(i).getJSONArray("emissions"));
+            JSONArray jsonArray = new JSONArray();
+            for (int i = 16; i < 25; i++) {
+                JSONArray jsonArray1 = new JSONArray();
+                jsonArray1.put(json.getJSONArray("data").getJSONObject(i).getString("sector"));
+                jsonArray1.put(json.getJSONArray("data").getJSONObject(i).getJSONArray("emissions").getJSONObject(annee - 1990));
+                jsonArray.put(jsonArray1);
             }
-            return jsonObject;
+            return jsonArray;
         } catch (IOException e) {
             e.printStackTrace();
         } catch (JSONException e) {
