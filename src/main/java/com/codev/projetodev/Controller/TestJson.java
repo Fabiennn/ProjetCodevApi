@@ -31,11 +31,17 @@ public class TestJson {
 
 
     @GetMapping(value = "/test2/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> getHistoric(@PathVariable String id) {
+    public ResponseEntity<String> getHistorique(@PathVariable String id) {
         return new ResponseEntity<String>(this.readJson.getHistorique(id).toString(), HttpStatus.OK);
     }
 
-    
+
+    @GetMapping(value = "/test3/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<String> getAllHistorique(@PathVariable String id) {
+        return new ResponseEntity<String>(this.readJson.getAllHistorique(id).toString(), HttpStatus.OK);
+    }
+
+
 
 
 }
