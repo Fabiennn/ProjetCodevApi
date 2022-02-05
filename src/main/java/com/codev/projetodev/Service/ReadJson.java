@@ -37,6 +37,7 @@ public class ReadJson {
             // Remplissage avec valeur des 4 composantes de la qualité de l'air
             ArrayList<String> arrayList = new ArrayList<>();
             arrayList.add(m.getValue());
+            System.out.println(m.getValue());
             if (json.getJSONObject("data").getJSONObject("iaqi").has("pm10")) {
                 arrayList.add(json.getJSONObject("data").getJSONObject("iaqi").getJSONObject("pm10").getString("v"));
             } else if (json.getJSONObject("data").getJSONObject("forecast").getJSONObject("daily").has("pm10")) {
@@ -91,7 +92,6 @@ public class ReadJson {
         hashMap.put("autriche", "AT");
         hashMap.put("zagreb", "HR");
         hashMap.put("rome", "IT");
-        hashMap.put("tirana", "AL");
         hashMap.put("copenhague", "DK");
         hashMap.put("athenes", "GR");
         hashMap.put("dublin", "IE");
