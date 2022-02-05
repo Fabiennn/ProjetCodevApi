@@ -24,7 +24,7 @@ public class ReadJson {
         return sb.toString();
     }
 
-    public JSONObject getHashMapForMap() throws IOException, JSONException {
+    public HashMap<String, ArrayList<String>> getHashMapForMap() throws IOException, JSONException {
         HashMap<String, ArrayList<String>> hashMap = new HashMap<>();
 
         HashMap<String, String> hashMapPays = new HashMap<>();
@@ -77,7 +77,7 @@ public class ReadJson {
 
              */
         }
-        return new JSONObject(hashMap);
+        return hashMap;
     }
 
 

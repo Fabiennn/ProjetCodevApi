@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 @RestController
 @CrossOrigin
@@ -22,7 +24,7 @@ public class TestJson {
 
 
     @GetMapping(value = "/test", produces = MediaType.APPLICATION_JSON_VALUE)
-    public JSONObject getHashMapForMap() throws IOException, JSONException {
+    public HashMap<String, ArrayList<String>> getHashMapForMap() throws IOException, JSONException {
 
         return this.readJson.getHashMapForMap();
     }
