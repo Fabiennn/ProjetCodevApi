@@ -91,6 +91,18 @@ public class ReadJson {
         hashMap.put("autriche", "AT");
         hashMap.put("zagreb", "HR");
         hashMap.put("rome", "IT");
+        hashMap.put("tirana", "AL");
+        hashMap.put("copenhague", "DK");
+        hashMap.put("athenes", "GR");
+        hashMap.put("dublin", "IE");
+        hashMap.put("reykjavik", "IS");
+        hashMap.put("luxembourg", "LU");
+        hashMap.put("oslo", "NO");
+        hashMap.put("lisbonne", "PT");
+        hashMap.put("prague", "CZ");
+        hashMap.put("bucarest", "RO");
+        hashMap.put("stockholm", "SE");
+        hashMap.put("kiev", "UA");
 
         return hashMap;
     }
