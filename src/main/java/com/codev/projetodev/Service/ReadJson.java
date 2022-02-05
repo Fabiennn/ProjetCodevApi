@@ -24,8 +24,8 @@ public class ReadJson {
         return sb.toString();
     }
 
-    public HashMap<String, ArrayList<String>> getHashMapForMap() throws IOException, JSONException {
-        HashMap<String, ArrayList<String>> hashMap = new HashMap<>();
+    public HashMap<Integer, ArrayList<String>> getHashMapForMap() throws IOException, JSONException {
+        HashMap<Integer, ArrayList<String>> hashMap = new HashMap<>();
 
         HashMap<String, String> hashMapPays = new HashMap<>();
         hashMapPays = this.initHashMap();
@@ -69,7 +69,7 @@ public class ReadJson {
             }
 
             arrayList.add(json.getJSONObject("data").getString("aqi"));
-            hashMap.put(m.getValue(), arrayList);
+            hashMap.put(hashMap.size(), arrayList);
             /*
             InputStream is = new URL(url).openStream();
             BufferedReader rd = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));

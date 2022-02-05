@@ -24,7 +24,7 @@ public class TestJson {
 
 
     @GetMapping(value = "/test", produces = MediaType.APPLICATION_JSON_VALUE)
-    public HashMap<String, ArrayList<String>> getHashMapForMap() throws IOException, JSONException {
+    public HashMap<Integer, ArrayList<String>> getHashMapForMap() throws IOException, JSONException {
 
         return this.readJson.getHashMapForMap();
     }
