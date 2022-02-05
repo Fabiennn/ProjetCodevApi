@@ -30,4 +30,11 @@ public class TestJson {
     }
 
 
+    @GetMapping(value = "/test2/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Object getHistoric(@PathVariable String id) {
+        System.out.println(id);
+        return "Test";
+    }
+
+
 }
