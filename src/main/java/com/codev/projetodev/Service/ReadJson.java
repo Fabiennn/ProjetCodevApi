@@ -1,5 +1,6 @@
 package com.codev.projetodev.Service;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.stereotype.Service;
@@ -122,5 +123,23 @@ public class ReadJson {
         } else return "90141F";
 
 
+    }
+
+
+    public JSONArray getHistorique(String pays) {
+        String url = "https://www.climatewatchdata.org/api/v1/data/historical_emissions?regions=" + pays;
+        InputStream inputStream = null;
+        try {
+            inputStream = new URL(url).openStream();
+            BufferedReader rd = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
+            String jsonText = readAll(rd);
+            JSONObject json = new JSONObject(jsonText);
+            return json.getJSONArray("data").getJSONObject(15).getJSONArray("emissions");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

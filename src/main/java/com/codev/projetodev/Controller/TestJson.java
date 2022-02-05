@@ -3,13 +3,13 @@ package com.codev.projetodev.Controller;
 
 import com.codev.projetodev.Service.ReadJson;
 import org.json.JSONException;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -31,10 +31,11 @@ public class TestJson {
 
 
     @GetMapping(value = "/test2/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Object getHistoric(@PathVariable String id) {
-        System.out.println(id);
-        return "Test";
+    public ResponseEntity<String> getHistoric(@PathVariable String id) {
+        return new ResponseEntity<String>(this.readJson.getHistorique(id).toString(), HttpStatus.OK);
     }
+
+    
 
 
 }
