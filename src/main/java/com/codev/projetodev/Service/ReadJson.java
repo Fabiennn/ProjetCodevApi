@@ -36,6 +36,7 @@ public class ReadJson {
             JSONObject json = new JSONObject(jsonText);
             // Remplissage avec valeur des 4 composantes de la qualité de l'air
             ArrayList<String> arrayList = new ArrayList<>();
+            arrayList.add(m.getValue());
             if (json.getJSONObject("data").getJSONObject("iaqi").has("pm10")) {
                 arrayList.add(json.getJSONObject("data").getJSONObject("iaqi").getJSONObject("pm10").getString("v"));
             } else if (json.getJSONObject("data").getJSONObject("forecast").getJSONObject("daily").has("pm10")){
