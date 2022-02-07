@@ -8,9 +8,7 @@ import org.springframework.stereotype.Service;
 import java.io.*;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 
 @Service
@@ -149,7 +147,7 @@ public class ReadJson {
     }
 
 
-    public JSONArray getAllHistorique(String pays, int annee ) {
+    public JSONArray getAllHistorique(String pays, int annee) {
         String url = "https://www.climatewatchdata.org/api/v1/data/historical_emissions?regions=" + pays;
         InputStream inputStream = null;
         try {
@@ -171,5 +169,51 @@ public class ReadJson {
             e.printStackTrace();
         }
         return null;
+    }
+
+
+    public LinkedHashMap<String, Double> getClassement() throws IOException, JSONException {
+
+
+        HashMap<String, Double> hashMap = new HashMap<>();
+
+        HashMap<String, String> hashMapPays = new HashMap<>();
+        hashMapPays = this.initHashMap();
+        for (Map.Entry<String, String> m : hashMapPays.entrySet()) {
+            InputStream inputStream = new URL("https://api.waqi.info/feed/" + m.getKey() + "/?token=43f1f4ff275908d10000e224ddae40a4b86a6892").openStream();
+            BufferedReader rd = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
+            String jsonText = readAll(rd);
+            JSONObject json = new JSONObject(jsonText);
+            // Remplissage avec valeur des 4 composantes de la qualité de l'air
+
+            hashMap.put(m.getValue(), json.getJSONObject("data").getDouble("aqi"));
+        }
+
+
+        List<Map.Entry<String, Double>> list =
+                new LinkedList<Map.Entry<String, Double>>(hashMap.entrySet());
+        Collections.sort(list, new Comparator<Map.Entry<String, Double>>() {
+            public int compare(Map.Entry<String, Double> o1, Map.Entry<String, Double> o2) {
+                return (o1.getValue()).compareTo(o2.getValue());
+            }
+        });
+
+
+        LinkedHashMap<String, Double> hashMap1 = new LinkedHashMap<>();
+        Locale local = new Locale("", list.get(0).getKey());
+        hashMap1.put(local.getDisplayCountry() ,list.get(0).getValue());
+        local = new Locale("", list.get(1).getKey());
+        hashMap1.put(local.getDisplayCountry()  ,list.get(1).getValue());
+        local = new Locale("", list.get(3).getKey());
+        hashMap1.put(local.getDisplayCountry()  ,list.get(2).getValue());
+        local = new Locale("", list.get(list.size()-1).getKey());
+        hashMap1.put(local.getDisplayCountry() ,list.get(list.size()-1).getValue());
+        local = new Locale("", list.get(list.size()-2).getKey());
+        hashMap1.put(local.getDisplayCountry() ,list.get(list.size()-2).getValue());
+        local = new Locale("", list.get(list.size()-3).getKey());
+        hashMap1.put(local.getDisplayCountry() ,list.get(list.size()-3).getValue());
+
+
+        return hashMap1;
     }
 }
