@@ -106,6 +106,10 @@ public class ReadJson {
         hashMap.put("stockholm", "SE");
         hashMap.put("kiev", "UA");
         hashMap.put("kaboul", "AF");
+        hashMap.put("alger", "DZ");
+        hashMap.put("ottawa", "CA");
+        hashMap.put("santiago", "CL");
+        hashMap.put("washington", "US");
 
         return hashMap;
     }
