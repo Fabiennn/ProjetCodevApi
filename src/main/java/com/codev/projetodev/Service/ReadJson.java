@@ -6,6 +6,7 @@ import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
+import java.lang.reflect.Array;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
@@ -172,7 +173,7 @@ public class ReadJson {
     }
 
 
-    public LinkedHashMap<String, Double> getClassement() throws IOException, JSONException {
+    public ArrayList<String> getClassement() throws IOException, JSONException {
 
 
         HashMap<String, Double> hashMap = new HashMap<>();
@@ -185,7 +186,6 @@ public class ReadJson {
             String jsonText = readAll(rd);
             JSONObject json = new JSONObject(jsonText);
             // Remplissage avec valeur des 4 composantes de la qualité de l'air
-
             hashMap.put(m.getValue(), json.getJSONObject("data").getDouble("aqi"));
         }
 
@@ -198,22 +198,28 @@ public class ReadJson {
             }
         });
 
-
+        ArrayList<String> arrayList = new ArrayList<>();
         LinkedHashMap<String, Double> hashMap1 = new LinkedHashMap<>();
         Locale local = new Locale("", list.get(0).getKey());
-        hashMap1.put(local.getDisplayCountry() ,list.get(0).getValue());
+        arrayList.add(local.getDisplayCountry());
+        arrayList.add(list.get(0).getValue().toString());
         local = new Locale("", list.get(1).getKey());
-        hashMap1.put(local.getDisplayCountry()  ,list.get(1).getValue());
+        arrayList.add(local.getDisplayCountry());
+        arrayList.add(list.get(1).getValue().toString());
         local = new Locale("", list.get(3).getKey());
-        hashMap1.put(local.getDisplayCountry()  ,list.get(2).getValue());
+        arrayList.add(local.getDisplayCountry());
+        arrayList.add(list.get(2).getValue().toString());
         local = new Locale("", list.get(list.size()-1).getKey());
-        hashMap1.put(local.getDisplayCountry() ,list.get(list.size()-1).getValue());
+        arrayList.add(local.getDisplayCountry());
+        arrayList.add(list.get(list.size()-1).getValue().toString());
         local = new Locale("", list.get(list.size()-2).getKey());
-        hashMap1.put(local.getDisplayCountry() ,list.get(list.size()-2).getValue());
+        arrayList.add(local.getDisplayCountry());
+        arrayList.add(list.get(list.size()-1).getValue().toString());
         local = new Locale("", list.get(list.size()-3).getKey());
-        hashMap1.put(local.getDisplayCountry() ,list.get(list.size()-3).getValue());
+        arrayList.add(local.getDisplayCountry());
+        arrayList.add(list.get(list.size()-1).getValue().toString());
 
 
-        return hashMap1;
+        return arrayList;
     }
 }

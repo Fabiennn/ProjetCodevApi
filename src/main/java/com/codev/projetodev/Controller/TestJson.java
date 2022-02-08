@@ -45,7 +45,7 @@ public class TestJson {
 
 
     @GetMapping(value = "/getClassement")
-    public HashMap<String, Double> getClassement() throws JSONException, IOException {
+    public ArrayList<String> getClassement() throws JSONException, IOException {
         return this.readJson.getClassement();
 
     }
