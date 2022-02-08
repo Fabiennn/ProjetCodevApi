@@ -15,7 +15,7 @@ import java.util.*;
 
 
 @Service
-public class ReadJson {
+public class JsonService {
 
     private String readAll(Reader rd) throws IOException {
         StringBuilder sb = new StringBuilder();
@@ -170,6 +170,34 @@ public class ReadJson {
                 jsonArray1.put(secteur);
                 jsonArray1.put(json.getJSONArray("data").getJSONObject(i).getJSONArray("emissions").getJSONObject(annee - 1990));
                 jsonArray.put(jsonArray1);
+            }
+            return jsonArray;
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public JSONArray getHistoriqueByCategorie(String pays, String categorie) {
+        String url = "https://www.climatewatchdata.org/api/v1/data/historical_emissions?regions=" + pays;
+        InputStream inputStream = null;
+        try {
+            inputStream = new URL(url).openStream();
+            BufferedReader rd = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
+            String jsonText = readAll(rd);
+            JSONObject json = new JSONObject(jsonText);
+            JSONArray jsonArray = new JSONArray();
+            for (int i = 16; i < 25; i++) {
+                String sector = json.getJSONArray("data").getJSONObject(i).getString("sector");
+                sector = sector.replaceAll("\\s+", "_");
+                sector = sector.replaceAll("\\p{Pd}", "_");
+                sector = sector.replaceAll("/", "_");
+                String secteur = SwitchLang.valueOf(sector).getTranslate();
+                if (secteur.equals(categorie)) {
+                    return json.getJSONArray("data").getJSONObject(i).getJSONArray("emissions");
+                }
             }
             return jsonArray;
         } catch (IOException e) {
