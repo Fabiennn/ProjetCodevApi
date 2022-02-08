@@ -214,10 +214,10 @@ public class ReadJson {
         arrayList.add(list.get(list.size()-1).getValue().toString());
         local = new Locale("", list.get(list.size()-2).getKey());
         arrayList.add(local.getDisplayCountry());
-        arrayList.add(list.get(list.size()-1).getValue().toString());
+        arrayList.add(list.get(list.size()-2).getValue().toString());
         local = new Locale("", list.get(list.size()-3).getKey());
         arrayList.add(local.getDisplayCountry());
-        arrayList.add(list.get(list.size()-1).getValue().toString());
+        arrayList.add(list.get(list.size()-3).getValue().toString());
 
 
         return arrayList;
