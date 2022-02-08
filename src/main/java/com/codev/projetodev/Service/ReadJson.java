@@ -1,5 +1,7 @@
 package com.codev.projetodev.Service;
 
+import com.codev.projetodev.Translate.SwitchLang;
+import com.sun.java.accessibility.util.Translator;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -149,6 +151,7 @@ public class ReadJson {
 
 
     public JSONArray getAllHistorique(String pays, int annee) {
+
         String url = "https://www.climatewatchdata.org/api/v1/data/historical_emissions?regions=" + pays;
         InputStream inputStream = null;
         try {
@@ -159,7 +162,12 @@ public class ReadJson {
             JSONArray jsonArray = new JSONArray();
             for (int i = 16; i < 25; i++) {
                 JSONArray jsonArray1 = new JSONArray();
-                jsonArray1.put(json.getJSONArray("data").getJSONObject(i).getString("sector"));
+                String sector = json.getJSONArray("data").getJSONObject(i).getString("sector");
+                sector = sector.replaceAll("\\s+", "_");
+                sector = sector.replaceAll("\\p{Pd}", "_");
+                sector = sector.replaceAll("/", "_");
+                String secteur = SwitchLang.valueOf(sector).getTranslate();
+                jsonArray1.put(secteur);
                 jsonArray1.put(json.getJSONArray("data").getJSONObject(i).getJSONArray("emissions").getJSONObject(annee - 1990));
                 jsonArray.put(jsonArray1);
             }
@@ -218,7 +226,6 @@ public class ReadJson {
         local = new Locale("", list.get(list.size()-3).getKey());
         arrayList.add(local.getDisplayCountry());
         arrayList.add(list.get(list.size()-3).getValue().toString());
-
 
         return arrayList;
     }
