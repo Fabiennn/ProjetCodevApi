@@ -13,8 +13,6 @@ public interface UtilisateurRepository extends JpaRepository<UtilisateurEntity, 
     @Query("select ut from UtilisateurEntity  ut where ut.surname = ?1")
     public UtilisateurEntity rechercheNom(String login);
 
-    public List<UtilisateurEntity> findByRole(String role);
-
     public UtilisateurEntity findById(Long id);
 
     public UtilisateurEntity findBySurname(String surname);

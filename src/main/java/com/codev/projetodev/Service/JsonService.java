@@ -32,6 +32,7 @@ public class JsonService {
         HashMap<String, String> hashMapPays = new HashMap<>();
         hashMapPays = this.initHashMap();
         for (Map.Entry<String, String> m : hashMapPays.entrySet()) {
+            System.out.println(m.getValue());
             InputStream inputStream = new URL("https://api.waqi.info/feed/" + m.getKey() + "/?token=43f1f4ff275908d10000e224ddae40a4b86a6892").openStream();
             BufferedReader rd = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
             String jsonText = readAll(rd);
@@ -111,6 +112,23 @@ public class JsonService {
         hashMap.put("ottawa", "CA");
         hashMap.put("santiago", "CL");
         hashMap.put("washington", "US");
+        hashMap.put("canberra", "AU");
+        hashMap.put("brasilia", "BR");
+        hashMap.put("pekin", "CN");
+        hashMap.put("tallinn", "EE");
+        hashMap.put("tbilissi", "GE");
+        hashMap.put("budapest", "HU");
+        hashMap.put("tokyo", "JP");
+        hashMap.put("vilnius", "LT");
+        hashMap.put("wellington", "NZ");
+        hashMap.put("amsterdam", "NL");
+        hashMap.put("panama", "PA");
+        hashMap.put("varsovie", "PL");
+        hashMap.put("moscou", "RU");
+        hashMap.put("belgrade", "RS");
+        hashMap.put("bratislava", "SK");
+        hashMap.put("ljubljana", "SK");
+        hashMap.put("berne", "SE");
 
         return hashMap;
     }

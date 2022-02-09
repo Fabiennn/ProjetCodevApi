@@ -50,7 +50,6 @@ public class AuthentificationService {
             byte[] salt = MonMotPassHash.transformeEnBytes(utilisateurEntity.getSalt());
             char[] pwd_char = MonMotPassHash.converttoCharArray(utilisateurEntity.getMdp());
             utilisateurEntity.setMdp(MonMotPassHash.bytesToString(MonMotPassHash.generatePasswordHash(pwd_char, salt)));
-            utilisateurEntity.setRole("apprenant");
 
             return this.utilisateurRepository.save(utilisateurEntity);
         } catch (Exception e) {
