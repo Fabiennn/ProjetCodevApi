@@ -189,7 +189,7 @@ public class JsonService {
             String jsonText = readAll(rd);
             JSONObject json = new JSONObject(jsonText);
             JSONArray jsonArray = new JSONArray();
-            for (int i = 16; i < 25; i++) {
+            for (int i = 15; i < 25; i++) {
                 String sector = json.getJSONArray("data").getJSONObject(i).getString("sector");
                 sector = sector.replaceAll("\\s+", "_");
                 sector = sector.replaceAll("\\p{Pd}", "_");
