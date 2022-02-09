@@ -253,7 +253,6 @@ public class JsonService {
         });
 
         ArrayList<String> arrayList = new ArrayList<>();
-        LinkedHashMap<String, Double> hashMap1 = new LinkedHashMap<>();
         Locale local = new Locale("", list.get(0).getKey());
         arrayList.add(local.getDisplayCountry());
         arrayList.add(list.get(0).getValue().toString());
@@ -276,7 +275,13 @@ public class JsonService {
         return arrayList;
     }
 
-    public HashMap<String, String> getPays() {
-        return this.initHashMap();
+    public List<String> getPays() {
+        List<String> list = new ArrayList<>();
+        HashMap<String, String> hashMapPays = new HashMap<>();
+        hashMapPays = this.initHashMap();
+        for (Map.Entry<String, String> m : hashMapPays.entrySet()) {
+            list.add(m.getValue());
+        }
+        return list;
     }
 }

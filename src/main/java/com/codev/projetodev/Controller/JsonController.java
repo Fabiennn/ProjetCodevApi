@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 @RestController
 @CrossOrigin
@@ -55,7 +56,7 @@ public class JsonController {
     }
 
     @GetMapping(value = "/getPays")
-    public HashMap<String, String> getPays() {
+    public List<String> getPays() {
         return this.jsonService.getPays();
     }
 
