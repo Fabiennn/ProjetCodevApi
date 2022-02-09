@@ -10,7 +10,7 @@ public class UtilisateurEntity {
     private String salt;
     private String email;
     private String mdp;
-    private String role;
+    private String pays;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -74,12 +74,12 @@ public class UtilisateurEntity {
     }
 
     @Basic
-    @Column(name = "role", nullable = true, length = 25)
-    public String getRole() {
-        return role;
+    @Column(name = "pays", nullable = true, length = 25)
+    public String getPays() {
+        return pays;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setPays(String pays) {
+        this.pays = pays;
     }
 }
