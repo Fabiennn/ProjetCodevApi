@@ -54,6 +54,11 @@ public class JsonController {
 
     }
 
+    @GetMapping(value = "/getPays")
+    public HashMap<String, String> getPays() {
+        return this.jsonService.getPays();
+    }
+
 
 
 

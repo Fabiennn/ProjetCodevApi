@@ -32,7 +32,6 @@ public class JsonService {
         HashMap<String, String> hashMapPays = new HashMap<>();
         hashMapPays = this.initHashMap();
         for (Map.Entry<String, String> m : hashMapPays.entrySet()) {
-            System.out.println(m.getValue());
             InputStream inputStream = new URL("https://api.waqi.info/feed/" + m.getKey() + "/?token=43f1f4ff275908d10000e224ddae40a4b86a6892").openStream();
             BufferedReader rd = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
             String jsonText = readAll(rd);
@@ -275,5 +274,9 @@ public class JsonService {
         arrayList.add(list.get(list.size()-3).getValue().toString());
 
         return arrayList;
+    }
+
+    public HashMap<String, String> getPays() {
+        return this.initHashMap();
     }
 }
