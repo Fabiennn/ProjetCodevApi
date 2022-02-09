@@ -1,4 +1,4 @@
-package utilitaires;
+package com.codev.projetodev.utilitaires;
 
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;

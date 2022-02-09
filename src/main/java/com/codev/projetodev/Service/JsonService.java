@@ -194,6 +194,7 @@ public class JsonService {
                 sector = sector.replaceAll("\\s+", "_");
                 sector = sector.replaceAll("\\p{Pd}", "_");
                 sector = sector.replaceAll("/", "_");
+                categorie = categorie.replaceAll("'", " ");
                 String secteur = SwitchLang.valueOf(sector).getTranslate();
                 if (secteur.equals(categorie)) {
                     return json.getJSONArray("data").getJSONObject(i).getJSONArray("emissions");
