@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mer. 09 fév. 2022 à 11:56
+-- Généré le : mer. 09 fév. 2022 à 16:49
 -- Version du serveur :  10.4.17-MariaDB
 -- Version de PHP : 8.0.1
 
@@ -28,24 +28,23 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `utilisateur` (
-  `id` int(11) NOT NULL,
-  `surname` char(25) DEFAULT NULL,
-  `forname` char(25) DEFAULT NULL,
-  `salt` char(100) DEFAULT NULL,
-  `email` char(50) DEFAULT NULL,
-  `mdp` char(80) DEFAULT NULL,
-  `role` char(25) DEFAULT NULL
+                               `id` int(11) NOT NULL,
+                               `forname` char(25) DEFAULT NULL,
+                               `salt` char(100) DEFAULT NULL,
+                               `email` char(50) DEFAULT NULL,
+                               `mdp` char(80) DEFAULT NULL,
+                               `pays` char(25) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `utilisateur`
 --
 
-INSERT INTO `utilisateur` (`id`, `surname`, `forname`, `salt`, `email`, `mdp`, `role`) VALUES
-(1, 'Doe', 'John', 'nC+LkxSBRR5r/uSLrtB7MB7laCpEWRs5uUpLm3N2JqA=', 'john.doe@email.com', 'WFGexk0cocZHcs7qJuPawA==', 'admin'),
-(15, 'Felix', 'Goubin', 'nC+LkxSBRR5r/uSLrtB7MB7laCpEWRs5uUpLm3N2JqA=', 'fabien.goubin@email.com', 'WFGexk0cocZHcs7qJuPawA==', 'apprenant'),
-(16, 'Tanguy', 'Geffrault', 'nC+LkxSBRR5r/uSLrtB7MB7laCpEWRs5uUpLm3N2JqA=', 'felix.geffrault@email.com', 'WFGexk0cocZHcs7qJuPawA==', 'apprenant'),
-(17, 'Dojhfge', NULL, 'HnPh+cHbMHVtxeWMjJFW3BAhStRYc3w8L81W9W7CqP0=', 'ee', '/dwL4lSVgiOBbmT8xgOiyA==', 'apprenant');
+INSERT INTO `utilisateur` (`id`, `forname`, `salt`, `email`, `mdp`, `pays`) VALUES
+(1, 'John', 'nC+LkxSBRR5r/uSLrtB7MB7laCpEWRs5uUpLm3N2JqA=', 'john.doe@email.com', 'WFGexk0cocZHcs7qJuPawA==', 'admin'),
+(15, 'Goubin', 'nC+LkxSBRR5r/uSLrtB7MB7laCpEWRs5uUpLm3N2JqA=', 'fabien.goubin@email.com', 'WFGexk0cocZHcs7qJuPawA==', 'apprenant'),
+(16, 'Geffrault', 'nC+LkxSBRR5r/uSLrtB7MB7laCpEWRs5uUpLm3N2JqA=', 'felix.geffrault@email.com', 'WFGexk0cocZHcs7qJuPawA==', 'apprenant'),
+(17, NULL, 'HnPh+cHbMHVtxeWMjJFW3BAhStRYc3w8L81W9W7CqP0=', 'ee', '/dwL4lSVgiOBbmT8xgOiyA==', 'apprenant');
 
 --
 -- Index pour les tables déchargées
@@ -55,7 +54,7 @@ INSERT INTO `utilisateur` (`id`, `surname`, `forname`, `salt`, `email`, `mdp`, `
 -- Index pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  ADD PRIMARY KEY (`id`);
+    ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT pour les tables déchargées
@@ -65,7 +64,7 @@ ALTER TABLE `utilisateur`
 -- AUTO_INCREMENT pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -5,7 +5,6 @@ import javax.persistence.*;
 @Table(name = "utilisateur")
 public class UtilisateurEntity {
     private Integer id;
-    private String surname;
     private String forname;
     private String salt;
     private String email;
@@ -21,16 +20,6 @@ public class UtilisateurEntity {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    @Basic
-    @Column(name = "surname", nullable = true, length = 25)
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
     }
 
     @Basic
