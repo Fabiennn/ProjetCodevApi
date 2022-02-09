@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface UtilisateurRepository extends JpaRepository<UtilisateurEntity, Integer> {
 
-    @Query("select ut from UtilisateurEntity  ut where ut.forname = ?1")
+    @Query("select ut from UtilisateurEntity  ut where ut.surname = ?1")
     public UtilisateurEntity rechercheNom(String login);
 
     public UtilisateurEntity findById(Long id);

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mer. 09 fév. 2022 à 16:49
+-- Généré le : mer. 09 fév. 2022 à 16:56
 -- Version du serveur :  10.4.17-MariaDB
 -- Version de PHP : 8.0.1
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `utilisateur` (
                                `id` int(11) NOT NULL,
-                               `forname` char(25) DEFAULT NULL,
+                               `surname` char(25) DEFAULT NULL,
                                `salt` char(100) DEFAULT NULL,
                                `email` char(50) DEFAULT NULL,
                                `mdp` char(80) DEFAULT NULL,
@@ -40,7 +40,7 @@ CREATE TABLE `utilisateur` (
 -- Déchargement des données de la table `utilisateur`
 --
 
-INSERT INTO `utilisateur` (`id`, `forname`, `salt`, `email`, `mdp`, `pays`) VALUES
+INSERT INTO `utilisateur` (`id`, `surname`, `salt`, `email`, `mdp`, `pays`) VALUES
 (1, 'John', 'nC+LkxSBRR5r/uSLrtB7MB7laCpEWRs5uUpLm3N2JqA=', 'john.doe@email.com', 'WFGexk0cocZHcs7qJuPawA==', 'admin'),
 (15, 'Goubin', 'nC+LkxSBRR5r/uSLrtB7MB7laCpEWRs5uUpLm3N2JqA=', 'fabien.goubin@email.com', 'WFGexk0cocZHcs7qJuPawA==', 'apprenant'),
 (16, 'Geffrault', 'nC+LkxSBRR5r/uSLrtB7MB7laCpEWRs5uUpLm3N2JqA=', 'felix.geffrault@email.com', 'WFGexk0cocZHcs7qJuPawA==', 'apprenant'),

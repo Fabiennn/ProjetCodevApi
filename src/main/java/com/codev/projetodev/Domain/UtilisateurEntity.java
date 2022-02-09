@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Table(name = "utilisateur")
 public class UtilisateurEntity {
     private Integer id;
-    private String forname;
+    private String surname;
     private String salt;
     private String email;
     private String mdp;
@@ -23,13 +23,13 @@ public class UtilisateurEntity {
     }
 
     @Basic
-    @Column(name = "forname", nullable = true, length = 25)
-    public String getForname() {
-        return forname;
+    @Column(name = "surname", nullable = true, length = 25)
+    public String getSurname() {
+        return surname;
     }
 
-    public void setForname(String forname) {
-        this.forname = forname;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
     @Basic
