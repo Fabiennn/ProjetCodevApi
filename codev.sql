@@ -27,6 +27,8 @@ SET time_zone = "+00:00";
 -- Structure de la table `utilisateur`
 --
 
+use heroku_4254beed7336469;
+
 CREATE TABLE `utilisateur` (
                                `id` int(11) NOT NULL,
                                `surname` char(25) DEFAULT NULL,
